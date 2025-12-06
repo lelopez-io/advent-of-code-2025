@@ -74,18 +74,19 @@ console.log(`part1SolutionOptimized:\t${part1SolutionOptimized()}`)
 export const countZeroCrossings = (currentPosition: number, delta: number) => {
     if (delta === 0) return 0
 
+    const initialCrossing = currentPosition === 0 ? 0 : 1
     if (delta > 0) {
-        const distanceToZero = 100 - currentPosition
+        const distanceToZero = currentPosition == 0 ? 0 : 100 - currentPosition
         if (delta < distanceToZero) return 0
 
         const remainingAfterZero = delta - distanceToZero
-        return 1 + Math.floor(remainingAfterZero / 100)
+        return initialCrossing + Math.floor(remainingAfterZero / 100)
     } else {
-        const distanceToZero = currentPosition
+        const distanceToZero = currentPosition == 0 ? 0 : currentPosition
         if (Math.abs(delta) < distanceToZero) return 0
 
         const remainingAfterZero = Math.abs(delta) - distanceToZero
-        return 1 + Math.floor(remainingAfterZero / 100)
+        return initialCrossing + Math.floor(remainingAfterZero / 100)
     }
 }
 
