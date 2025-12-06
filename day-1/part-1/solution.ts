@@ -25,7 +25,7 @@ for (const line of lines) {
 
     if (endPosition < 0) {
         remainder = Math.abs(endPosition) % 100
-        endPosition = 100 - remainder
+        endPosition = remainder === 0 ? 0 : 100 - remainder
     }
 
     if (endPosition == 0) {
