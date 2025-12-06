@@ -71,7 +71,7 @@ const part1SolutionOptimized = () => {
 
 console.log(`part1SolutionOptimized:\t${part1SolutionOptimized()}`)
 
-const countTransientZeros = (currentPosition: number, delta: number) => {
+export const countZeroCrossings = (currentPosition: number, delta: number) => {
     if (delta === 0) return 0
 
     if (delta > 0) {
@@ -98,7 +98,7 @@ const part2SolutionInitial = () => {
 
         // handle turns greater than 100 clicks (full turns)
         const delta = (line[0] === 'L' ? -1 : 1) * parseInt(line.substring(1))
-        solution += countTransientZeros(currentPosition, delta)
+        solution += countZeroCrossings(currentPosition, delta)
 
         // handle converting the change back to valid position (in range)
         const effectiveDelta = delta % 100
