@@ -70,3 +70,31 @@ const part1SolutionOptimized = () => {
 }
 
 console.log(`part1SolutionOptimized:\t${part1SolutionOptimized()}`)
+
+const part2SolutionInitial = () => {
+    let currentPosition = STARTING_POINT
+    let solution = 0
+
+    for (const line of LINES) {
+        if (!line) continue
+
+        // handle turns greater than 100 clicks (full turns)
+        const delta = (line[0] === 'L' ? -1 : 1) * parseInt(line.substring(1))
+        const effectiveDelta = delta % 100
+
+        // count transient 0 clicks
+        solution += Math.abs(Math.floor(delta / 100))
+
+        // handle converting the change back to valid position (in range)
+        currentPosition += effectiveDelta
+        if (currentPosition >= 100) currentPosition -= 100
+        if (currentPosition < 0) currentPosition += 100
+
+        // check if zero
+        if (currentPosition === 0) solution++
+    }
+
+    return solution
+}
+
+console.log(`part2SolutionInitial:\t${part2SolutionInitial()}`)
