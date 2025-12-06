@@ -1,13 +1,10 @@
-const FILE = Bun.file(`${import.meta.dir}/input`)
-const TEXT = await FILE.text()
-const LINES = TEXT.split('\n')
-
-const STARTING_POINT = 50
-
-const part1SolutionInitial = () => {
-    let currentPosition = STARTING_POINT
+export const part1SolutionInitial = (
+    startingPosition: number,
+    lines: string[]
+) => {
+    let currentPosition = startingPosition
     let solution = 0
-    for (const line of LINES) {
+    for (const line of lines) {
         const [op, val] = [line[0], line.substring(1)]
 
         if (!op) {
@@ -44,13 +41,14 @@ const part1SolutionInitial = () => {
     return solution
 }
 
-console.log(`part1SolutionInitial:\t${part1SolutionInitial()}`)
-
-const part1SolutionOptimized = () => {
-    let currentPosition = STARTING_POINT
+export const part1SolutionOptimized = (
+    startingPosition: number,
+    lines: string[]
+) => {
+    let currentPosition = startingPosition
     let solution = 0
 
-    for (const line of LINES) {
+    for (const line of lines) {
         if (!line) continue
 
         // handle turns greater than 100 clicks (full turns)
@@ -68,8 +66,6 @@ const part1SolutionOptimized = () => {
 
     return solution
 }
-
-console.log(`part1SolutionOptimized:\t${part1SolutionOptimized()}`)
 
 export const countZeroCrossings = (currentPosition: number, delta: number) => {
     if (delta === 0) return 0
@@ -90,11 +86,14 @@ export const countZeroCrossings = (currentPosition: number, delta: number) => {
     }
 }
 
-const part2SolutionInitial = () => {
-    let currentPosition = STARTING_POINT
+export const part2SolutionInitial = (
+    startingPosition: number,
+    lines: string[]
+) => {
+    let currentPosition = startingPosition
     let solution = 0
 
-    for (const line of LINES) {
+    for (const line of lines) {
         if (!line) continue
 
         // handle turns greater than 100 clicks (full turns)
@@ -110,5 +109,3 @@ const part2SolutionInitial = () => {
 
     return solution
 }
-
-console.log(`part2SolutionInitial:\t${part2SolutionInitial()}`)

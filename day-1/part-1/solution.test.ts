@@ -1,5 +1,28 @@
 import { test, expect } from 'bun:test'
-import { countZeroCrossings } from './solution'
+import {
+    countZeroCrossings,
+    part1SolutionInitial,
+    part1SolutionOptimized,
+    part2SolutionInitial,
+} from './solution'
+
+const loadInput = async () => {
+    const FILE = Bun.file(`${import.meta.dir}/input`)
+    const TEXT = await FILE.text()
+    return TEXT.split('\n')
+}
+
+test('part1SolutionInitial - works', async () => {
+    expect(part1SolutionInitial(50, await loadInput())).toBe(1129)
+})
+
+test('part1SolutionOptimized- works', async () => {
+    expect(part1SolutionOptimized(50, await loadInput())).toBe(1129)
+})
+
+test('part2SolutionInitial - works', async () => {
+    expect(part2SolutionInitial(50, await loadInput())).toBe(6638)
+})
 
 test('moving right - reaches zero exactly', () => {
     expect(countZeroCrossings(50, 50)).toBe(1)
