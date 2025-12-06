@@ -74,20 +74,19 @@ console.log(`part1SolutionOptimized:\t${part1SolutionOptimized()}`)
 const countTransientZeros = (currentPosition: number, delta: number) => {
     if (delta === 0) return 0
 
-    let count = 0
-
-    const endDelta = currentPosition + delta
     if (delta > 0) {
-        const minDelta = 100 - currentPosition
-        if (Math.abs(delta) < minDelta) return 0
-        count++
-    } else {
-        const minDelta = currentPosition
-        if (Math.abs(delta) < minDelta) return 0
-        count++
-    }
+        const distanceToZero = 100 - currentPosition
+        if (delta < distanceToZero) return 0
 
-    return count + Math.floor(Math.abs(endDelta) / 100)
+        const remainingAfterZero = delta - distanceToZero
+        return 1 + Math.floor(remainingAfterZero / 100)
+    } else {
+        const distanceToZero = currentPosition
+        if (Math.abs(delta) < distanceToZero) return 0
+
+        const remainingAfterZero = Math.abs(delta) - distanceToZero
+        return 1 + Math.floor(remainingAfterZero / 100)
+    }
 }
 
 const part2SolutionInitial = () => {
