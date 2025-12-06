@@ -19,13 +19,13 @@ for (const line of lines) {
     let remainder = 0
 
     if (endPosition > 99) {
-        remainder = endPosition % 99
-        endPosition = 0 + remainder
+        remainder = endPosition % 100
+        endPosition = remainder
     }
 
     if (endPosition < 0) {
-        remainder = endPosition % 99
-        endPosition = 100 + remainder
+        remainder = Math.abs(endPosition) % 100
+        endPosition = 100 - remainder
     }
 
     if (endPosition == 0) {
