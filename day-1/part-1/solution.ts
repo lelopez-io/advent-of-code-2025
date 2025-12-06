@@ -71,6 +71,25 @@ const part1SolutionOptimized = () => {
 
 console.log(`part1SolutionOptimized:\t${part1SolutionOptimized()}`)
 
+const countTransientZeros = (currentPosition: number, delta: number) => {
+    if (delta === 0) return 0
+
+    let count = 0
+
+    const endDelta = currentPosition + delta
+    if (delta > 0) {
+        const minDelta = 100 - currentPosition
+        if (Math.abs(delta) < minDelta) return 0
+        count++
+    } else {
+        const minDelta = currentPosition
+        if (Math.abs(delta) < minDelta) return 0
+        count++
+    }
+
+    return count + Math.floor(Math.abs(endDelta) / 100)
+}
+
 const part2SolutionInitial = () => {
     let currentPosition = STARTING_POINT
     let solution = 0
@@ -80,18 +99,13 @@ const part2SolutionInitial = () => {
 
         // handle turns greater than 100 clicks (full turns)
         const delta = (line[0] === 'L' ? -1 : 1) * parseInt(line.substring(1))
-        const effectiveDelta = delta % 100
-
-        // count transient 0 clicks
-        solution += Math.abs(Math.floor(delta / 100))
+        solution += countTransientZeros(currentPosition, delta)
 
         // handle converting the change back to valid position (in range)
+        const effectiveDelta = delta % 100
         currentPosition += effectiveDelta
         if (currentPosition >= 100) currentPosition -= 100
         if (currentPosition < 0) currentPosition += 100
-
-        // check if zero
-        if (currentPosition === 0) solution++
     }
 
     return solution
