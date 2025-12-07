@@ -20,11 +20,11 @@ describe('unit tests - sample cases', () => {
     })
 
     test('validateRange - example2', () => {
-        expect(validateRange(95, 115)).toEqual([99])
+        expect(validateRange(95, 115)).toEqual([99, 111])
     })
 
     test('validateRange - example3', () => {
-        expect(validateRange(998, 1012)).toEqual([1010])
+        expect(validateRange(998, 1012)).toEqual([999, 1010])
     })
 
     test('validateRange - example4', () => {
@@ -45,5 +45,17 @@ describe('unit tests - sample cases', () => {
 
     test('validateRange - example8', () => {
         expect(validateRange(38593856, 38593862)).toEqual([38593859])
+    })
+
+    test('validateRange - exampleX', () => {
+        expect(validateRange(565653, 565659)).toEqual([565656])
+    })
+
+    test('validateRange - exampleX', () => {
+        expect(validateRange(824824821, 824824827)).toEqual([824824824])
+    })
+
+    test('validateRange - exampleX', () => {
+        expect(validateRange(2121212118, 2121212124)).toEqual([2121212121])
     })
 })
