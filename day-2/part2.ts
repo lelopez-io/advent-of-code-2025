@@ -1,7 +1,7 @@
 import { sumInvalidIds } from './sumInvalidIds'
 
 const isRepeatingPattern = (idString: number): boolean => {
-    return /^(\d+)\1+$/.test(`${idString}`)
+    return /^(\d+)\1+$/.test(String(idString))
 }
 
 export const validateRange = (
@@ -19,6 +19,6 @@ export const validateRange = (
     return invalidIds
 }
 
-export const part2Initial = (lines: string[]) => {
+export const part2Initial = (lines: string[]): number => {
     return sumInvalidIds(lines, validateRange)
 }
