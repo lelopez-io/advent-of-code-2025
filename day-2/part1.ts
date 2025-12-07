@@ -2,14 +2,11 @@ import { sumInvalidIds } from './sumInvalidIds'
 
 const isRepeatingPattern = (id: number): boolean => {
     const idString = String(id)
-    const idLength = idString.length
-
-    if (idLength % 2 != 0) {
-        return false
-    }
 
     if (
-        idString.substring(0, idLength / 2) === idString.substring(idLength / 2)
+        idString.length % 2 === 0 &&
+        idString.substring(0, idString.length / 2) ===
+            idString.substring(idString.length / 2)
     ) {
         process.env.DEBUG && console.debug(`substring match - pushing ${id}`)
         return true
