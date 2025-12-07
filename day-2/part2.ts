@@ -1,7 +1,9 @@
 import { sumInvalidIds } from './sumInvalidIds'
 
+const REPEATING_PATTERN = /^(\d+)\1+$/
+
 const isRepeatingPattern = (idString: number): boolean => {
-    return /^(\d+)\1+$/.test(String(idString))
+    return REPEATING_PATTERN.test(String(idString))
 }
 
 export const validateRange = (
