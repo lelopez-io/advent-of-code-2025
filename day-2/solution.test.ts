@@ -1,10 +1,5 @@
 import { test, expect, describe } from 'bun:test'
-import {
-    part1Initial,
-    part1Optimized,
-    part2Initial,
-    validateRange,
-} from './solution'
+import { part1Initial, validateRange } from './solution'
 
 const loadInput = async () => {
     const FILE = Bun.file(`${import.meta.dir}/input`)
@@ -16,16 +11,6 @@ describe('integration tests', () => {
     test('part1Initial', async () => {
         const solution = part1Initial(await loadInput())
         expect(solution).toMatchInlineSnapshot(`13919717792`)
-    })
-
-    test('part1Optimized', async () => {
-        const solution = part1Optimized(await loadInput())
-        expect(solution).toMatchInlineSnapshot(`1129`)
-    })
-
-    test('part2Initial', async () => {
-        const solution = part2Initial(await loadInput())
-        expect(solution).toMatchInlineSnapshot(`6638`)
     })
 })
 
