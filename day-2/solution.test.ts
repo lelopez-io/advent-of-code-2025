@@ -15,7 +15,7 @@ const loadInput = async () => {
 describe('integration tests', () => {
     test('part1Initial', async () => {
         const solution = part1Initial(await loadInput())
-        expect(solution).toMatchInlineSnapshot(`1129`)
+        expect(solution).toMatchInlineSnapshot(`13919717792`)
     })
 
     test('part1Optimized', async () => {
