@@ -1,5 +1,5 @@
 import { test, expect, describe } from 'bun:test'
-import { part1Initial, validateRange } from './solution'
+import { part1Initial, validateRange } from './part1'
 
 const loadInput = async () => {
     const FILE = Bun.file(`${import.meta.dir}/input`)
