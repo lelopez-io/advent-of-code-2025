@@ -1,16 +1,11 @@
 import { test, expect, describe } from 'bun:test'
 import { part2Initial, validateRange } from './part2'
-
-const loadInput = async () => {
-    const FILE = Bun.file(`${import.meta.dir}/input`)
-    const TEXT = await FILE.text()
-    return TEXT.split(',')
-}
+import { loadInput } from './loadInput'
 
 describe('integration tests', () => {
     test('part2Initial', async () => {
         const solution = part2Initial(await loadInput())
-        expect(solution).toMatchInlineSnapshot(`13919717792`)
+        expect(solution).toMatchInlineSnapshot(`14582313461`)
     })
 })
 

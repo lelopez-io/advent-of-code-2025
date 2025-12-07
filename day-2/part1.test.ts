@@ -1,11 +1,6 @@
 import { test, expect, describe } from 'bun:test'
 import { part1Initial, validateRange } from './part1'
-
-const loadInput = async () => {
-    const FILE = Bun.file(`${import.meta.dir}/input`)
-    const TEXT = await FILE.text()
-    return TEXT.split(',')
-}
+import { loadInput } from './loadInput'
 
 describe('integration tests', () => {
     test('part1Initial', async () => {

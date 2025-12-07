@@ -1,15 +1,7 @@
-const parseRange = (line: string): [number, number] | null => {
-    const parts = line.split('-')
-    if (parts.length !== 2) return null
+import { parseRange } from './parseRange'
 
-    const start = parseInt(parts[0] ?? '')
-    const end = parseInt(parts[1] ?? '')
-    process.env.DEBUG && console.debug(`\tstart: ${start}`)
-    process.env.DEBUG && console.debug(`\tend: ${end}`)
-
-    if (isNaN(start) || isNaN(end)) return null
-
-    return [start, end]
+const isRepeatingPattern = (idString: string): boolean => {
+    return /^(\d+)\1+$/.test(idString)
 }
 
 export const validateRange = (rangeStart: number, rangeEnd: number) => {
@@ -17,16 +9,8 @@ export const validateRange = (rangeStart: number, rangeEnd: number) => {
 
     for (let i = rangeStart; i <= rangeEnd; i++) {
         const idString = `${i}`
-        const idLength = idString.length
 
-        if (idLength % 2 != 0) {
-            continue
-        }
-
-        if (
-            idString.substring(0, idLength / 2) ===
-            idString.substring(idLength / 2)
-        ) {
+        if (isRepeatingPattern(idString)) {
             process.env.DEBUG && console.debug(`substring match - pushing ${i}`)
             invalidIds.push(i)
         }
