@@ -2,6 +2,28 @@
 
 Solutions for [Advent of Code 2025](https://adventofcode.com/2025) using Bun and TypeScript.
 
+## Prerequisites
+
+This project uses [Bun](https://bun.sh) - a fast all-in-one JavaScript runtime.
+
+Runtime versions are managed with [mise](https://mise.jdx.dev/), which will automatically install Bun.
+
+**Install mise:**
+
+```bash
+# macOS
+brew install mise
+
+# Or see https://mise.jdx.dev/getting-started.html for other platforms
+```
+
+**First-time setup (installs Bun):**
+
+```bash
+mise trust
+mise install
+```
+
 ## Setup
 
 Install dependencies:
@@ -77,7 +99,3 @@ Each solution follows a consistent pattern:
 - `part1Optimized()` / `part2Optimized()` - optimized version (optional)
 
 Tests use `test.each` for parametrized testing and separate integration/unit tests.
-
----
-
-This project uses [Bun](https://bun.sh) - a fast all-in-one JavaScript runtime.
