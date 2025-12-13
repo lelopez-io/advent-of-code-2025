@@ -13,76 +13,54 @@ const loadInput = async () => {
 }
 
 describe('integration tests', () => {
-    test('part1SolutionInitial - works', async () => {
-        const solution = part1SolutionInitial(50, await loadInput())
+    test.each([
+        { fn: part1SolutionInitial, name: 'part1SolutionInitial' },
+        { fn: part1SolutionOptimized, name: 'part1SolutionOptimized' },
+    ])('$name', async ({ fn }) => {
+        const solution = fn(50, await loadInput())
         expect(solution).toMatchInlineSnapshot(`1129`)
     })
 
-    test('part1SolutionOptimized- works', async () => {
-        const solution = part1SolutionOptimized(50, await loadInput())
-        expect(solution).toMatchInlineSnapshot(`1129`)
-    })
-
-    test('part2SolutionInitial - works', async () => {
-        const solution = part2SolutionInitial(50, await loadInput())
+    test.each([
+        { fn: part2SolutionInitial, name: 'part2SolutionInitial' },
+    ])('$name', async ({ fn }) => {
+        const solution = fn(50, await loadInput())
         expect(solution).toMatchInlineSnapshot(`6638`)
     })
 })
 
 describe('unit tests', () => {
-    test('moving right - reaches zero exactly', () => {
-        expect(countZeroCrossings(50, 50)).toBe(1)
+    test.each([
+        { pos: 50, delta: 50, expected: 1, desc: 'reaches zero exactly' },
+        { pos: 50, delta: 30, expected: 0, desc: "doesn't reach zero" },
+        { pos: 50, delta: 150, expected: 2, desc: 'crosses zero twice' },
+    ])('moving right - $desc', ({ pos, delta, expected }) => {
+        expect(countZeroCrossings(pos, delta)).toBe(expected)
     })
 
-    test("moving right - doesn't reach zero", () => {
-        expect(countZeroCrossings(50, 30)).toBe(0)
+    test.each([
+        { pos: 50, delta: -50, expected: 1, desc: 'reaches zero exactly' },
+        { pos: 50, delta: -30, expected: 0, desc: "doesn't reach zero" },
+        { pos: 50, delta: -150, expected: 2, desc: 'crosses zero twice' },
+    ])('moving left - $desc', ({ pos, delta, expected }) => {
+        expect(countZeroCrossings(pos, delta)).toBe(expected)
     })
 
-    test('moving right - crosses zero twice', () => {
-        expect(countZeroCrossings(50, 150)).toBe(2)
+    test.each([
+        { pos: 99, delta: 1, desc: 'start at 99, move right 1' },
+        { pos: 1, delta: -1, desc: 'start at 1, move left 1' },
+    ])('edge-case - $desc', ({ pos, delta }) => {
+        expect(countZeroCrossings(pos, delta)).toBe(1)
     })
 
-    test('moving left - reaches zero exactly', () => {
-        expect(countZeroCrossings(50, -50)).toBe(1)
-    })
-
-    test("moving left - doesn't reach zero", () => {
-        expect(countZeroCrossings(50, -30)).toBe(0)
-    })
-
-    test('moving left - crosses zero twice', () => {
-        expect(countZeroCrossings(50, -150)).toBe(2)
-    })
-
-    test('edge-case - start at 99, move right 1', () => {
-        expect(countZeroCrossings(99, 1)).toBe(1)
-    })
-
-    test('edge-case - start at 1, move left 1', () => {
-        expect(countZeroCrossings(1, -1)).toBe(1)
-    })
-
-    test('start at 0 - move right small', () => {
-        expect(countZeroCrossings(0, 5)).toBe(0)
-    })
-
-    test('start at 0 - move left small', () => {
-        expect(countZeroCrossings(0, -5)).toBe(0)
-    })
-
-    test('start at 0 - move right full loop', () => {
-        expect(countZeroCrossings(0, 100)).toBe(1)
-    })
-
-    test('start at 0 - move left full loop', () => {
-        expect(countZeroCrossings(0, -100)).toBe(1)
-    })
-
-    test('start at 0 - move right multiple loops', () => {
-        expect(countZeroCrossings(0, 250)).toBe(2)
-    })
-
-    test('start at 0 - move left multiple loops', () => {
-        expect(countZeroCrossings(0, -250)).toBe(2)
+    test.each([
+        { delta: 5, expected: 0, desc: 'move right small' },
+        { delta: -5, expected: 0, desc: 'move left small' },
+        { delta: 100, expected: 1, desc: 'move right full loop' },
+        { delta: -100, expected: 1, desc: 'move left full loop' },
+        { delta: 250, expected: 2, desc: 'move right multiple loops' },
+        { delta: -250, expected: 2, desc: 'move left multiple loops' },
+    ])('start at 0 - $desc', ({ delta, expected }) => {
+        expect(countZeroCrossings(0, delta)).toBe(expected)
     })
 })

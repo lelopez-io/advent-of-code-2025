@@ -3,54 +3,28 @@ import { part2Initial, validateRange } from './part2'
 import { loadInput } from './loadInput'
 
 describe('integration tests', () => {
-    test('part2Initial', async () => {
-        const solution = part2Initial(await loadInput())
+    test.each([
+        { fn: part2Initial, name: 'part2Initial' },
+    ])('$name', async ({ fn }) => {
+        const solution = fn(await loadInput())
         expect(solution).toMatchInlineSnapshot(`14582313461`)
     })
 })
 
 describe('unit tests - sample cases', () => {
-    test('validateRange - example1', () => {
-        expect(validateRange(11, 22)).toEqual([11, 22])
-    })
-
-    test('validateRange - example2', () => {
-        expect(validateRange(95, 115)).toEqual([99, 111])
-    })
-
-    test('validateRange - example3', () => {
-        expect(validateRange(998, 1012)).toEqual([999, 1010])
-    })
-
-    test('validateRange - example4', () => {
-        expect(validateRange(1188511880, 1188511890)).toEqual([1188511885])
-    })
-
-    test('validateRange - example5', () => {
-        expect(validateRange(222220, 222224)).toEqual([222222])
-    })
-
-    test('validateRange - example6', () => {
-        expect(validateRange(1698522, 1698528)).toEqual([])
-    })
-
-    test('validateRange - example7', () => {
-        expect(validateRange(446443, 446449)).toEqual([446446])
-    })
-
-    test('validateRange - example8', () => {
-        expect(validateRange(38593856, 38593862)).toEqual([38593859])
-    })
-
-    test('validateRange - exampleX', () => {
-        expect(validateRange(565653, 565659)).toEqual([565656])
-    })
-
-    test('validateRange - exampleX', () => {
-        expect(validateRange(824824821, 824824827)).toEqual([824824824])
-    })
-
-    test('validateRange - exampleX', () => {
-        expect(validateRange(2121212118, 2121212124)).toEqual([2121212121])
+    test.each([
+        { start: 11, end: 22, expected: [11, 22] },
+        { start: 95, end: 115, expected: [99, 111] },
+        { start: 998, end: 1012, expected: [999, 1010] },
+        { start: 1188511880, end: 1188511890, expected: [1188511885] },
+        { start: 222220, end: 222224, expected: [222222] },
+        { start: 1698522, end: 1698528, expected: [] },
+        { start: 446443, end: 446449, expected: [446446] },
+        { start: 38593856, end: 38593862, expected: [38593859] },
+        { start: 565653, end: 565659, expected: [565656] },
+        { start: 824824821, end: 824824827, expected: [824824824] },
+        { start: 2121212118, end: 2121212124, expected: [2121212121] },
+    ])('validateRange($start, $end) returns $expected', ({ start, end, expected }) => {
+        expect(validateRange(start, end)).toEqual(expected)
     })
 })

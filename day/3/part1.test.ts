@@ -8,40 +8,31 @@ import {
 import { loadInput } from './loadInput'
 
 describe('integration tests', () => {
-    test('part1Initial', async () => {
-        const solution = part1Initial(await loadInput())
-        expect(solution).toMatchInlineSnapshot(`17031`)
-    })
-    test('part1Optimized', async () => {
-        const solution = part1Optimized(await loadInput())
+    test.each([
+        { fn: part1Initial, name: 'part1Initial' },
+        { fn: part1Optimized, name: 'part1Optimized' },
+    ])('$name', async ({ fn }) => {
+        const solution = fn(await loadInput())
         expect(solution).toMatchInlineSnapshot(`17031`)
     })
 })
 
 describe('unit tests - sample cases', () => {
-    test('getOptimalRatingCombo - example1', () => {
-        expect(getOptimalRatingCombo('987654321111111')).toEqual(98)
-    })
-    test('getOptimalRatingCombo - example1', () => {
-        expect(getOptimalRatingCombo('811111111111119')).toEqual(89)
-    })
-    test('getOptimalRatingCombo - example1', () => {
-        expect(getOptimalRatingCombo('234234234234278')).toEqual(78)
-    })
-    test('getOptimalRatingCombo - example1', () => {
-        expect(getOptimalRatingCombo('818181911112111')).toEqual(92)
+    test.each([
+        { input: '987654321111111', expected: 98 },
+        { input: '811111111111119', expected: 89 },
+        { input: '234234234234278', expected: 78 },
+        { input: '818181911112111', expected: 92 },
+    ])('getOptimalRatingCombo($input) returns $expected', ({ input, expected }) => {
+        expect(getOptimalRatingCombo(input)).toEqual(expected)
     })
 
-    test('getOptimalRatingComboOptimized - example1', () => {
-        expect(getOptimalRatingComboOptimized('987654321111111')).toEqual(98)
-    })
-    test('getOptimalRatingComboOptimized - example1', () => {
-        expect(getOptimalRatingComboOptimized('811111111111119')).toEqual(89)
-    })
-    test('getOptimalRatingComboOptimized - example1', () => {
-        expect(getOptimalRatingComboOptimized('234234234234278')).toEqual(78)
-    })
-    test('getOptimalRatingComboOptimized - example1', () => {
-        expect(getOptimalRatingComboOptimized('818181911112111')).toEqual(92)
+    test.each([
+        { input: '987654321111111', expected: 98 },
+        { input: '811111111111119', expected: 89 },
+        { input: '234234234234278', expected: 78 },
+        { input: '818181911112111', expected: 92 },
+    ])('getOptimalRatingComboOptimized($input) returns $expected', ({ input, expected }) => {
+        expect(getOptimalRatingComboOptimized(input)).toEqual(expected)
     })
 })
