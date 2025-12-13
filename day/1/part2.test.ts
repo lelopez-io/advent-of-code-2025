@@ -1,32 +1,15 @@
 import { test, expect, describe } from 'bun:test'
-import {
-    countZeroCrossings,
-    part1SolutionInitial,
-    part1SolutionOptimized,
-    part2SolutionInitial,
-} from './solution'
-
-const loadInput = async () => {
-    const FILE = Bun.file(`${import.meta.dir}/input`)
-    const TEXT = await FILE.text()
-    return TEXT.split('\n')
-}
+import { part2SolutionInitial, countZeroCrossings } from './part2'
+import { loadInput } from './loadInput'
 
 describe('integration tests', () => {
-    test.each([
-        { fn: part1SolutionInitial, name: 'part1SolutionInitial' },
-        { fn: part1SolutionOptimized, name: 'part1SolutionOptimized' },
-    ])('$name', async ({ fn }) => {
-        const solution = fn(50, await loadInput())
-        expect(solution).toMatchInlineSnapshot(`1129`)
-    })
-
-    test.each([
-        { fn: part2SolutionInitial, name: 'part2SolutionInitial' },
-    ])('$name', async ({ fn }) => {
-        const solution = fn(50, await loadInput())
-        expect(solution).toMatchInlineSnapshot(`6638`)
-    })
+    test.each([{ fn: part2SolutionInitial, name: 'part2SolutionInitial' }])(
+        '$name',
+        async ({ fn }) => {
+            const solution = fn(50, await loadInput())
+            expect(solution).toMatchInlineSnapshot(`6638`)
+        }
+    )
 })
 
 describe('unit tests', () => {
