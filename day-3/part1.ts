@@ -49,8 +49,8 @@ export const part1Initial = (lines: string[]): number => {
 }
 
 export const part1Optimized = (lines: string[]): number => {
-    return lines.reduce(
-        (acc, line) => (line ? acc + getOptimalRatingCombo(line) : 0),
-        0
-    )
+    return lines.reduce((acc, line) => {
+        if (!line) return acc
+        return acc + getOptimalRatingCombo(line)
+    }, 0)
 }
