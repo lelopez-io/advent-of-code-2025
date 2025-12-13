@@ -1,7 +1,7 @@
 export const processLine = (line: string): number => {
-    return 0
+    throw new Error('Not implemented')
 }
 
 export const part1Initial = (lines: string[]): number => {
-    return 0
+    throw new Error('Not implemented')
 }

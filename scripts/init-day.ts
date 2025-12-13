@@ -13,11 +13,11 @@ const loadInputTemplate = `export const loadInput = async () => {
 `
 
 const part1Template = `export const processLine = (line: string): number => {
-    return 0
+    throw new Error('Not implemented')
 }
 
 export const part1Initial = (lines: string[]): number => {
-    return 0
+    throw new Error('Not implemented')
 }
 `
 
@@ -44,11 +44,11 @@ describe('unit tests', () => {
 `
 
 const part2Template = `export const processLine = (line: string): number => {
-    return 0
+    throw new Error('Not implemented')
 }
 
 export const part2Initial = (lines: string[]): number => {
-    return 0
+    throw new Error('Not implemented')
 }
 `
 
