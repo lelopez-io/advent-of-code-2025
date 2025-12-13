@@ -2,7 +2,7 @@ import { test, expect, describe } from 'bun:test'
 import { buildLargestNumber, part2Initial } from './part2'
 import { loadInput } from './loadInput'
 
-describe('integration tests', () => {
+describe('part2 - integration', () => {
     test.each([
         { fn: part2Initial, name: 'part2Initial' },
     ])('$name', async ({ fn }) => {
@@ -11,7 +11,7 @@ describe('integration tests', () => {
     })
 })
 
-describe('unit tests - sample cases', () => {
+describe('part2 - unit', () => {
     test.each([
         { input: '987654321111111', expected: 987654321111 },
         { input: '811111111111119', expected: 811111111119 },

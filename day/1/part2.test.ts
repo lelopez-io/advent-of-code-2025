@@ -2,7 +2,7 @@ import { test, expect, describe } from 'bun:test'
 import { part2SolutionInitial, countZeroCrossings } from './part2'
 import { loadInput } from './loadInput'
 
-describe('integration tests', () => {
+describe('part2 - integration', () => {
     test.each([{ fn: part2SolutionInitial, name: 'part2SolutionInitial' }])(
         '$name',
         async ({ fn }) => {
@@ -12,7 +12,7 @@ describe('integration tests', () => {
     )
 })
 
-describe('unit tests', () => {
+describe('part2 - unit', () => {
     test.each([
         { pos: 50, delta: 50, expected: 1, desc: 'reaches zero exactly' },
         { pos: 50, delta: 30, expected: 0, desc: "doesn't reach zero" },

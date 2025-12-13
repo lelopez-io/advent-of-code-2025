@@ -1,5 +1,5 @@
 {
-  "name": "2025-aoc",
+  "name": "advent-of-code-2025",
   "module": "index.ts",
   "type": "module",
   "private": true,

@@ -2,7 +2,7 @@ import { test, expect, describe } from 'bun:test'
 import { part1SolutionInitial, part1SolutionOptimized } from './part1'
 import { loadInput } from './loadInput'
 
-describe('integration tests', () => {
+describe('part1 - integration', () => {
     test.each([
         { fn: part1SolutionInitial, name: 'part1SolutionInitial' },
         { fn: part1SolutionOptimized, name: 'part1SolutionOptimized' },
