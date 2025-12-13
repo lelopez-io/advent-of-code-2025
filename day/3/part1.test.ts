@@ -7,7 +7,7 @@ import {
 } from './part1'
 import { loadInput } from './loadInput'
 
-describe('integration tests', () => {
+describe('part1 - integration', () => {
     test.each([
         { fn: part1Initial, name: 'part1Initial' },
         { fn: part1Optimized, name: 'part1Optimized' },
@@ -17,7 +17,7 @@ describe('integration tests', () => {
     })
 })
 
-describe('unit tests - sample cases', () => {
+describe('part1 - unit', () => {
     test.each([
         { input: '987654321111111', expected: 98 },
         { input: '811111111111119', expected: 89 },

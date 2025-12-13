@@ -2,7 +2,7 @@ import { test, expect, describe } from 'bun:test'
 import { part1Initial, validateRange } from './part1'
 import { loadInput } from './loadInput'
 
-describe('integration tests', () => {
+describe('part1 - integration', () => {
     test.each([
         { fn: part1Initial, name: 'part1Initial' },
     ])('$name', async ({ fn }) => {
@@ -11,7 +11,7 @@ describe('integration tests', () => {
     })
 })
 
-describe('unit tests - sample cases', () => {
+describe('part1 - unit', () => {
     test.each([
         { start: 11, end: 22, expected: [11, 22] },
         { start: 95, end: 115, expected: [99] },
