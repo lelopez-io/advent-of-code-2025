@@ -22,4 +22,17 @@ describe('unit tests - sample cases', () => {
     test('buildLargestNumber - example1', () => {
         expect(buildLargestNumber('818181911112111')).toEqual(888911112111)
     })
+
+    test('buildLargestNumber - example1', () => {
+        expect(buildLargestNumber('987654321111111', 2)).toEqual(98)
+    })
+    test('buildLargestNumber - example1', () => {
+        expect(buildLargestNumber('811111111111119', 2)).toEqual(89)
+    })
+    test('buildLargestNumber - example1', () => {
+        expect(buildLargestNumber('234234234234278', 2)).toEqual(78)
+    })
+    test('buildLargestNumber - example1', () => {
+        expect(buildLargestNumber('818181911112111', 2)).toEqual(92)
+    })
 })
