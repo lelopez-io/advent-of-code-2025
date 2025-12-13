@@ -48,12 +48,14 @@ export const part1Initial = (lines: string[]): number => {
     return solution
 }
 
+const CHAR_CODE_ZERO = 48 // '0' = 48 in ASCII, for 0-9 we expect 48-57
+
 export const getOptimalRatingComboOptimized = (ratings: string) => {
     let max1Val = -1,
         max1Idx = -1
 
     for (let i = 0, len = ratings.length - 1; i < len; i++) {
-        const val = ratings.charCodeAt(i) - 48 // '0' = 48 in ASCII
+        const val = ratings.charCodeAt(i) - CHAR_CODE_ZERO
         if (val < 0 || val > 9) throw Error(`Found non-int: ${val}`)
         if (val > max1Val) {
             max1Val = val
@@ -63,9 +65,9 @@ export const getOptimalRatingComboOptimized = (ratings: string) => {
 
     let max2Val = -1
     for (let i = max1Idx + 1, len = ratings.length; i < len; i++) {
-        const val = ratings.charCodeAt(i) - 48 // '0' = 48 in ASCII
+        const val = ratings.charCodeAt(i) - CHAR_CODE_ZERO
         if (val < 0 || val > 9) throw Error(`Found non-int: ${val}`)
-        if (val > max1Val) {
+        if (val > max2Val) {
             max2Val = val
         }
     }
