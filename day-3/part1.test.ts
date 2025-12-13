@@ -1,5 +1,10 @@
 import { test, expect, describe } from 'bun:test'
-import { part1Initial, getOptimalRatingCombo, part1Optimized } from './part1'
+import {
+    part1Initial,
+    getOptimalRatingCombo,
+    part1Optimized,
+    getOptimalRatingComboOptimized,
+} from './part1'
 import { loadInput } from './loadInput'
 
 describe('integration tests', () => {
@@ -25,5 +30,18 @@ describe('unit tests - sample cases', () => {
     })
     test('getOptimalRatingCombo - example1', () => {
         expect(getOptimalRatingCombo('818181911112111')).toEqual(92)
+    })
+
+    test('getOptimalRatingComboOptimized - example1', () => {
+        expect(getOptimalRatingComboOptimized('987654321111111')).toEqual(98)
+    })
+    test('getOptimalRatingComboOptimized - example1', () => {
+        expect(getOptimalRatingComboOptimized('811111111111119')).toEqual(89)
+    })
+    test('getOptimalRatingComboOptimized - example1', () => {
+        expect(getOptimalRatingComboOptimized('234234234234278')).toEqual(78)
+    })
+    test('getOptimalRatingComboOptimized - example1', () => {
+        expect(getOptimalRatingComboOptimized('818181911112111')).toEqual(92)
     })
 })
