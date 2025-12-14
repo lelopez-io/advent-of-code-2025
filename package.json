@@ -4,7 +4,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "init-day": "bun run scripts/init-day.ts"
+    "init-day": "bun run scripts/init-day.ts",
+    "download-input": "bun run scripts/download-input.ts",
+    "encrypt-input": "./scripts/encrypt-input.sh",
+    "decrypt-inputs": "./scripts/decrypt-inputs.sh"
   },
   "devDependencies": {
     "@types/bun": "latest"
