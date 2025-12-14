@@ -17,20 +17,14 @@ brew install mise
 # Or see https://mise.jdx.dev/getting-started.html for other platforms
 ```
 
-**First-time setup (installs Bun):**
+**First-time setup:**
 
 ```bash
 mise trust
-mise install
+mise run setup
 ```
 
-## Setup
-
-Install dependencies:
-
-```bash
-bun install
-```
+This installs Bun, project dependencies, and sets up git hooks (auto-push on commit).
 
 ## Project Structure
 
