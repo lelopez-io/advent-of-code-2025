@@ -7,7 +7,7 @@ describe('part2 - integration', () => {
         '$name',
         async ({ fn }) => {
             const solution = fn(await loadInput())
-            expect(solution).toMatchInlineSnapshot()
+            expect(solution).toMatchInlineSnapshot(`8623`)
         }
     )
 })

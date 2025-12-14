@@ -33,14 +33,22 @@ export const processLine = (line: string, len: number): [string, number] => {
     let count = 0
 
     for (let i = 0; i < chars.length; i++) {
-        const c1 = chars[i - (len + 1)]
-        const c2 = chars[i - len]
-        const c3 = chars[i - (len - 1)]
-        const c4 = chars[i - 1]
-        const c5 = chars[i + 1]
-        const c6 = chars[i + (len - 1)]
-        const c7 = chars[i + len]
-        const c8 = chars[i + (len + 1)]
+        if (chars[i] != '@') continue
+
+        const col = i % len
+
+        // Left side nighbors (undefined if col === 0)
+        const c1 = col > 0 ? chars[i - (len + 1)] : undefined // top-left
+        const c4 = col > 0 ? chars[i - 1] : undefined // left
+        const c6 = col > 0 ? chars[i + (len - 1)] : undefined // bottom-left
+
+        // Right side nighbors (undefined if col === len -1)
+        const c3 = col < len - 1 ? chars[i - (len - 1)] : undefined // top-right
+        const c5 = col < len - 1 ? chars[i + 1] : undefined // right
+        const c8 = col < len - 1 ? chars[i + (len + 1)] : undefined // bottom-right
+
+        const c2 = chars[i - len] // top
+        const c7 = chars[i + len] // bottom
 
         const sum = [c1, c2, c3, c4, c5, c6, c7, c8].filter(
             (c) => c === '@' || c === 'x'
@@ -68,7 +76,7 @@ export const part2Initial = (lines: string[]): number => {
 
         if (c == 0) loop = false
 
-        line = l
+        line = l.replaceAll('x', '.')
         solution += c
     }
 
