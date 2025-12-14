@@ -1,0 +1,3 @@
+creation_rules:
+  - path_regex: src/day/.*/input$
+    age: age170nlnh9k4ds86qwqnvaq7wfsewm20qhwddj0jdpd2xh4hgq33ansapesja
