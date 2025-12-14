@@ -28,5 +28,11 @@ export const processLine = (
 }
 
 export const part1Initial = (lines: string[]): number => {
-    throw new Error('Not implemented')
+    let solution = 0
+
+    for (let i = 0; i < lines.length; i++) {
+        solution += processLine([lines[i - 1], lines[i], lines[i + 1]])
+    }
+
+    return solution
 }
