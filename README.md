@@ -29,16 +29,17 @@ This installs Bun, project dependencies, and sets up git hooks (auto-push on com
 ## Project Structure
 
 ```
-day/
-├── 1/
-│   ├── input           # puzzle input
-│   ├── loadInput.ts    # input loader
-│   ├── part1.ts        # part 1 solution
-│   ├── part1.test.ts   # part 1 tests
-│   ├── part2.ts        # part 2 solution
-│   └── part2.test.ts   # part 2 tests
-├── 2/
-└── ...
+src/
+└── day/
+    ├── 1/
+    │   ├── input           # puzzle input
+    │   ├── loadInput.ts    # input loader
+    │   ├── part1.ts        # part 1 solution
+    │   ├── part1.test.ts   # part 1 tests
+    │   ├── part2.ts        # part 2 solution
+    │   └── part2.test.ts   # part 2 tests
+    ├── 2/
+    └── ...
 ```
 
 ## Quick Start
@@ -63,16 +64,16 @@ bun run init-day 4
 bun test
 
 # Run tests for specific day
-bun test day/4
+bun test src/day/4
 
 # Run only part 1 tests
-bun test day/4 -t "part1"
+bun test src/day/4 -t "part1"
 
 # Run only integration tests
-bun test day/4 -t "integration"
+bun test src/day/4 -t "integration"
 
 # Run specific test
-bun test day/4 -t "part2 - integration"
+bun test src/day/4 -t "part2 - integration"
 ```
 
 ## Getting Solution Values
@@ -80,8 +81,8 @@ bun test day/4 -t "part2 - integration"
 When you complete a solution, run the integration test to see the answer in the error output, then update the snapshot:
 
 ```bash
-bun test day/4 -t "part2 - integration"
-bun test day/4 -t "part2 - integration" -u
+bun test src/day/4 -t "part2 - integration"
+bun test src/day/4 -t "part2 - integration" -u
 ```
 
 ## Solution Pattern

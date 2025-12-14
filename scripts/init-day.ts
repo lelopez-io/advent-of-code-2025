@@ -4,7 +4,7 @@ if (!dayNum) {
     process.exit(1)
 }
 
-const dayDir = `${process.cwd()}/day/${dayNum}`
+const dayDir = `${process.cwd()}/src/day/${dayNum}`
 const loadInputTemplate = `export const loadInput = async () => {
     const FILE = Bun.file(\`\${import.meta.dir}/input\`)
     const TEXT = await FILE.text()
@@ -80,7 +80,7 @@ await Bun.write(`${dayDir}/part1.test.ts`, part1TestTemplate)
 await Bun.write(`${dayDir}/part2.ts`, part2Template)
 await Bun.write(`${dayDir}/part2.test.ts`, part2TestTemplate)
 
-console.log(`✓ day/${dayNum}`)
+console.log(`✓ src/day/${dayNum}`)
 
 const session = process.env.AOC_SESSION
 if (session) {
