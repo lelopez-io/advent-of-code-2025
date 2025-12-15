@@ -26,6 +26,12 @@ mise run setup
 
 This installs Bun, project dependencies, and sets up git hooks (auto-push on commit).
 
+**Optional - For input backup (maintainer only):**
+
+```bash
+brew install age sops 1password-cli
+```
+
 ## Project Structure
 
 ```
@@ -94,3 +100,27 @@ Each solution follows a consistent pattern:
 - `part1Optimized()` / `part2Optimized()` - optimized version (optional)
 
 Tests use `test.each` for parametrized testing and separate integration/unit tests.
+
+## Input Backup (Maintainer Only)
+
+Per [Advent of Code policy](https://adventofcode.com/2025/about#faq_copying), puzzle inputs should not be redistributed. This repo uses SOPS + age encryption for personal backup only.
+
+**Note:** Encrypted inputs in this repo are personal and won't work for others. You'll need to download your own inputs using your AOC session cookie.
+
+**Personal backup workflow:**
+
+```bash
+# Download input for an existing day
+bun run download-input 4
+
+# Encrypt it (creates input.enc)
+./scripts/encrypt-input.sh 4
+
+# Batch operation for multiple days
+for day in {1..4}; do
+  bun run download-input $day && ./scripts/encrypt-input.sh $day
+done
+
+# On new machine: decrypt all inputs (requires 1Password access)
+bun run decrypt-inputs
+```
